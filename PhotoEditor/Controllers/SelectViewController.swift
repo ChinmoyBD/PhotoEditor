@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditorViewController: UIViewController {
+class SelectViewController: UIViewController {
     
     private let selectImageButton: UIButton = {
         let button = UIButton()
@@ -54,9 +54,25 @@ class EditorViewController: UIViewController {
     }
     
     @objc private func selectImageButtonTapped() {
-        print("Select Image")
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+    
+    func startEditing(image: UIImage) {
+        print("sart editing")
     }
 
+}
 
+extension SelectViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as? UIImage {
+            self.dismiss(animated: true, completion: nil)
+            startEditing(image: image)
+        }
+    }
 }
 
