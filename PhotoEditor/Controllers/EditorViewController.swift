@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreImage
 
 class EditorViewController: UIViewController {
     
@@ -14,14 +15,26 @@ class EditorViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    private let filterButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Filter", for: .normal)
+        return button
+    }()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.1529217958, green: 0.1529547274, blue: 0.1529174745, alpha: 1)
         
+        filterButton.addTarget(self,
+                              action: #selector(filterButtonTapped),
+                              for: .touchUpInside)
+
+        
         // Add SubView
         view.addSubview(imageView)
+        view.addSubview(filterButton)
     }
     
     override func viewDidLayoutSubviews() {
@@ -38,6 +51,28 @@ class EditorViewController: UIViewController {
                                  y: view.height/7,
                                  width: view.width,
                                  height: view.height/1.5)
+        
+        filterButton.frame = CGRect(x: (view.width/2)-20,
+                                    y: imageView.bottom+10,
+                                    width: 40,
+                                    height: 20)
+    }
+    
+    // apply sepia filter
+    let context = CIContext()
+    
+    @objc private func filterButtonTapped() {
+        
+        if imageView.image == nil {
+            return
+        }
+        
+        let filter = CIFilter(name: "CISepiaTone")
+        filter?.setValue(1.0, forKey: kCIInputIntensityKey)
+        
+        filter?.setValue(CIImage(image: imageView.image!), forKey: kCIInputImageKey)
+        let output = filter?.outputImage
+        imageView.image = UIImage(cgImage: self.context.createCGImage(output!, from: output!.extent)!)
     }
     
 
