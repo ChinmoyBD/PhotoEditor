@@ -62,7 +62,7 @@ class SelectViewController: UIViewController {
     
     func startEditing(image: UIImage) {
         let vc = EditorViewController()
-        vc.imageView.image = image
+        vc.originalImage = image
         navigationController?.pushViewController(vc, animated: true)
     }
 

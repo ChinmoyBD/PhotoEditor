@@ -22,7 +22,9 @@ class EditorViewController: UIViewController {
         return button
     }()
     
-    let filters = ["CIBumpDistortion", "CIGaussianBlur", "CIPixellate", "CISepiaTone", "CITwirlDistortion", "CIUnsharpMask", "CIVignette"]
+    var originalImage: UIImage?
+    
+    let filters = ["CISepiaTone", "CIVibrance"]
     
 //    private var filterCollectionView: UICollectionView = {
 //        let collectionView = UICollectionView()
@@ -46,6 +48,8 @@ class EditorViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.1529217958, green: 0.1529547274, blue: 0.1529174745, alpha: 1)
         
+        imageView.image = originalImage
+        
         setupNavigationBar()
         setupCollectionView()
         
@@ -60,6 +64,7 @@ class EditorViewController: UIViewController {
         view.addSubview(filterButton)
         view.addSubview(filterCollectionView)
         print(imageView.bottom)
+        
         filterCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: (view.height/7 + view.height/1.5)+20).isActive = true
         filterCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
         filterCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
@@ -130,12 +135,43 @@ extension EditorViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.identifier, for: indexPath) as! FilterCollectionViewCell
-        cell.editedImage.image = imageView.image
+        cell.editedImage.image = setFilter(filterType: filters[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (filterCollectionView.frame.width)/4.5, height: (filterCollectionView.frame.width)/4)
     }
+    
+    private func setFilter(filterType: String) -> UIImage {
+        
+        let filter = CIFilter(name: filterType)
+        if filterType == "CISepiaTone" {
+            filter?.setValue(1.0, forKey: kCIInputIntensityKey)
+        }
+        
+        filter?.setValue(CIImage(image: imageView.image!), forKey: kCIInputImageKey)
+        let output = filter?.outputImage
+        return UIImage(cgImage: self.context.createCGImage(output!, from: output!.extent)!)
+    }
+
+    
+//    func setFilter(filterType: String) {
+//        let currentFilter = CIFilter(name: filterType)
+//
+//        let beginImage = CIImage(image: originalImage!)
+//        currentFilter?.setValue(beginImage, forKey: kCIInputImageKey)
+//    }
+//
+//    func applyProcessing(currentFilter: Any) {
+//        guard let outputImage = currentFilter.outputImage else {
+//            return
+//        }
+//        currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
+//
+//        if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
+//            let processedImage = UIImage(cgImage: cgImage)!
+//        }
+//    }
     
 }
