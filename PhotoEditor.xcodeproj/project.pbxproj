@@ -15,6 +15,7 @@
 		A53EA42A26A57D4A00D673D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A53EA42826A57D4A00D673D7 /* LaunchScreen.storyboard */; };
 		A53EA43626A593D900D673D7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EA43526A593D900D673D7 /* Extensions.swift */; };
 		A53EA43826A61E7A00D673D7 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EA43726A61E7A00D673D7 /* EditorViewController.swift */; };
+		A53EA43C26A7DC2500D673D7 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EA43B26A7DC2500D673D7 /* FilterCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A53EA42B26A57D4A00D673D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A53EA43526A593D900D673D7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A53EA43726A61E7A00D673D7 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
+		A53EA43B26A7DC2500D673D7 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				A53EA43426A57F5300D673D7 /* Storyboards */,
 				A53EA42626A57D4A00D673D7 /* Assets.xcassets */,
+				A53EA43B26A7DC2500D673D7 /* FilterCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				A53EA41E26A57D4800D673D7 /* AppDelegate.swift in Sources */,
 				A53EA42026A57D4800D673D7 /* SceneDelegate.swift in Sources */,
 				A53EA43826A61E7A00D673D7 /* EditorViewController.swift in Sources */,
+				A53EA43C26A7DC2500D673D7 /* FilterCollectionViewCell.swift in Sources */,
 				A53EA43626A593D900D673D7 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
