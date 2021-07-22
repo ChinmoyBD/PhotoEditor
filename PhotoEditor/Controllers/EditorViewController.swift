@@ -22,9 +22,17 @@ class EditorViewController: UIViewController {
         return button
     }()
     
+    var outputImage = [UIImage]()
+    
     var originalImage: UIImage?
     
-    let filters = ["CISepiaTone", "CIVibrance"]
+    let filters = [
+        "CIColorCrossPolynomial", "CIColorCube", "CIColorCubeWithColorSpace", "CIColorInvert", "CIColorMap",
+        "CIColorMonochrome", "CIColorPosterize", "CIFalseColor", "CIMaskToAlpha", "CIMaximumComponent",
+        "CIMinimumComponent", "CIPhotoEffectChrome", "CIPhotoEffectFade", "CIPhotoEffectInstant", "CIPhotoEffectMono",
+        "CIPhotoEffectNoir", "CIPhotoEffectProcess", "CIPhotoEffectTonal", "CIPhotoEffectTransfer", "CISepiaTone",
+        "CIVignette", "CIVignetteEffect"
+    ]
     
 //    private var filterCollectionView: UICollectionView = {
 //        let collectionView = UICollectionView()
@@ -136,11 +144,16 @@ extension EditorViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.identifier, for: indexPath) as! FilterCollectionViewCell
         cell.editedImage.image = setFilter(filterType: filters[indexPath.row])
+        outputImage.append(cell.editedImage.image!)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (filterCollectionView.frame.width)/4.5, height: (filterCollectionView.frame.width)/4)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        imageView.image = outputImage[indexPath.row]
     }
     
     private func setFilter(filterType: String) -> UIImage {
@@ -150,8 +163,14 @@ extension EditorViewController: UICollectionViewDelegate, UICollectionViewDataSo
             filter?.setValue(1.0, forKey: kCIInputIntensityKey)
         }
         
-        filter?.setValue(CIImage(image: imageView.image!), forKey: kCIInputImageKey)
+        filter?.setValue(CIImage(image: originalImage!), forKey: kCIInputImageKey)
         let output = filter?.outputImage
+//        guard let output = output else {
+//            return originalImage!
+//        }
+        if output == nil {
+            return originalImage!
+        }
         return UIImage(cgImage: self.context.createCGImage(output!, from: output!.extent)!)
     }
 
