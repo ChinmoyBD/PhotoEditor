@@ -133,7 +133,6 @@ class EditorViewController: UIViewController {
         imageView.image = UIImage(cgImage: self.context.createCGImage(output!, from: output!.extent)!)
     }
     
-
 }
 
 extension EditorViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
