@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A53EA41E26A57D4800D673D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EA41D26A57D4800D673D7 /* AppDelegate.swift */; };
-		A53EA42026A57D4800D673D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EA41F26A57D4800D673D7 /* SceneDelegate.swift */; };
 		A53EA42226A57D4800D673D7 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EA42126A57D4800D673D7 /* SelectViewController.swift */; };
 		A53EA42526A57D4800D673D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A53EA42326A57D4800D673D7 /* Main.storyboard */; };
 		A53EA42726A57D4A00D673D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A53EA42626A57D4A00D673D7 /* Assets.xcassets */; };
@@ -22,7 +21,6 @@
 /* Begin PBXFileReference section */
 		A53EA41A26A57D4800D673D7 /* PhotoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53EA41D26A57D4800D673D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A53EA41F26A57D4800D673D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A53EA42126A57D4800D673D7 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 		A53EA42426A57D4800D673D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A53EA42626A57D4A00D673D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,10 +62,12 @@
 		A53EA41C26A57D4800D673D7 /* PhotoEditor */ = {
 			isa = PBXGroup;
 			children = (
+				A53EA41D26A57D4800D673D7 /* AppDelegate.swift */,
 				A53EA43326A57ECF00D673D7 /* Resources */,
 				A581C8A126AACBCF00501923 /* Model */,
 				A53EA43226A57E9600D673D7 /* Views */,
 				A53EA43126A57E7100D673D7 /* Controllers */,
+				A53EA42626A57D4A00D673D7 /* Assets.xcassets */,
 				A53EA42B26A57D4A00D673D7 /* Info.plist */,
 			);
 			path = PhotoEditor;
@@ -86,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				A53EA43426A57F5300D673D7 /* Storyboards */,
-				A53EA42626A57D4A00D673D7 /* Assets.xcassets */,
 				A53EA43B26A7DC2500D673D7 /* FilterCollectionViewCell.swift */,
 			);
 			path = Views;
@@ -95,8 +94,6 @@
 		A53EA43326A57ECF00D673D7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A53EA41D26A57D4800D673D7 /* AppDelegate.swift */,
-				A53EA41F26A57D4800D673D7 /* SceneDelegate.swift */,
 				A53EA43526A593D900D673D7 /* Extensions.swift */,
 			);
 			path = Resources;
@@ -192,7 +189,6 @@
 				A53EA42226A57D4800D673D7 /* SelectViewController.swift in Sources */,
 				A53EA41E26A57D4800D673D7 /* AppDelegate.swift in Sources */,
 				A581C8A326AAE15C00501923 /* File.swift in Sources */,
-				A53EA42026A57D4800D673D7 /* SceneDelegate.swift in Sources */,
 				A53EA43826A61E7A00D673D7 /* EditorViewController.swift in Sources */,
 				A53EA43C26A7DC2500D673D7 /* FilterCollectionViewCell.swift in Sources */,
 				A53EA43626A593D900D673D7 /* Extensions.swift in Sources */,
