@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var mainImgImportView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var mainImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -37,6 +38,16 @@ class HomeViewController: UIViewController {
         
         switch sender.tag {
         case 0:
+            print(bottomView.height)
+            UIView.animate(withDuration: 0.3) {
+                self.topView.frame.origin.y -= 50
+                self.popUpView.frame.origin.y -= self.bottomView.height+50
+            } completion: { (finished) in
+                if finished{
+                    //self.popUpView.frame.origin.y += self.bottomView.height
+                }
+            }
+            
             break
         case 1:
             break
@@ -51,6 +62,12 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBAction func popUpButtons(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+            self.topView.frame.origin.y += 50
+            self.popUpView.frame.origin.y += self.bottomView.height+50
+        }
+    }
     
 }
 
