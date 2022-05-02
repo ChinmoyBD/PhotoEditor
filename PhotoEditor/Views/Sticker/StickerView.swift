@@ -7,12 +7,17 @@
 
 import UIKit
 
+protocol StickerViewDelegate {
+    func selectedImage(image: UIImage)
+}
+
 class StickerView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var stickerCollectionView: UICollectionView!
     
-    var imojis = [UIImage]()
+    var emojis = [UIImage]()
+    var delegate: StickerViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,7 +44,7 @@ class StickerView: UIView, UICollectionViewDelegate, UICollectionViewDataSource 
     func loadCollectionViewData() {
         for i in 0x1F601...0x1F64F {
             let image = String(UnicodeScalar(i) ?? "-").emojiToImage(size: 120)
-            imojis.append(image)
+            emojis.append(image)
         }
         
         stickerCollectionView.reloadData()
@@ -48,15 +53,21 @@ class StickerView: UIView, UICollectionViewDelegate, UICollectionViewDataSource 
     
     //MARK: - Sticker Collection View
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imojis.count
+        return emojis.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = stickerCollectionView.dequeueReusableCell(withReuseIdentifier: "StickerCollectionViewCell", for: indexPath) as! StickerCollectionViewCell
         cell.backgroundColor = UIColor(named: "cell")
         cell.layer.cornerRadius = 5
-        cell.editedImage.image = imojis[indexPath.row]
+        cell.editedImage.image = emojis[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let delegate = delegate {
+            delegate.selectedImage(image: emojis[indexPath.row])
+        }
     }
 
 }

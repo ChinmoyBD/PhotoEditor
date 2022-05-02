@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var mainImgImportView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
@@ -40,6 +40,7 @@ class HomeViewController: UIViewController {
         switch sender.tag {
         case 0:
             let sv = StickerView(frame: CGRect(x: 5, y: 5, width: popUpView.width-10, height: bottomView.height-30))
+            sv.delegate = self
             popUpView.addSubview(sv)
             break
         case 1:
@@ -70,6 +71,15 @@ class HomeViewController: UIViewController {
         }
     }
     
+}
+
+//MARK: - Sticker
+
+extension HomeViewController: StickerViewDelegate {
+    func selectedImage(image: UIImage) {
+        popUpButtons(UIButton())
+        print(image)
+    }
 }
 
 //MARK: - Import Image
