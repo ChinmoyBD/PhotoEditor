@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
         mainImgImportView.layer.cornerRadius = mainImgImportView.height / 2
         topView.isHidden = true
         bottomView.isHidden = true
+
     }
     
     @IBAction func importMainImgButtonAction(_ sender: UIButton) {
@@ -38,16 +39,8 @@ class HomeViewController: UIViewController {
         
         switch sender.tag {
         case 0:
-            print(bottomView.height)
-            UIView.animate(withDuration: 0.3) {
-                self.topView.frame.origin.y -= 50
-                self.popUpView.frame.origin.y -= self.bottomView.height+50
-            } completion: { (finished) in
-                if finished{
-                    //self.popUpView.frame.origin.y += self.bottomView.height
-                }
-            }
-            
+            let sv = StickerView(frame: CGRect(x: 5, y: 5, width: popUpView.width-10, height: bottomView.height-30))
+            popUpView.addSubview(sv)
             break
         case 1:
             break
@@ -60,6 +53,14 @@ class HomeViewController: UIViewController {
         default:
             break
         }
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+            UIView.animate(withDuration: 0.3) {
+                self.topView.frame.origin.y -= 50
+                self.popUpView.frame.origin.y -= self.bottomView.height+50
+    //                self.popUpView.addSubview(sv)
+            }
+        }
+
     }
     
     @IBAction func popUpButtons(_ sender: UIButton) {

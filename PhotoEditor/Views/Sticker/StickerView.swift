@@ -7,11 +7,12 @@
 
 import UIKit
 
-class StickerView: UIView {
+class StickerView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    let kCONTENT_XIB_NAME = "StickerView"
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var stickerCollectionView: UICollectionView!
+    
+    var imojis = [UIImage]()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,20 +25,38 @@ class StickerView: UIView {
     }
     
     func commonInit() {
-        Bundle.main.loadNibNamed(kCONTENT_XIB_NAME, owner: self, options: nil)
-        contentView.fixInView(self)
+        let viewFromXib = Bundle.main.loadNibNamed("StickerView", owner: self, options: nil)![0] as! UIView
+        //contentView.fixInView(self)
+        viewFromXib.frame = self.bounds
+        addSubview(viewFromXib)
+        
+        stickerCollectionView.delegate = self
+        stickerCollectionView.dataSource = self
+        stickerCollectionView.register(StickerCollectionViewCell.self, forCellWithReuseIdentifier: StickerCollectionViewCell.identifier)
+        loadCollectionViewData()
     }
-}
+    
+    func loadCollectionViewData() {
+        for i in 0x1F601...0x1F64F {
+            let image = String(UnicodeScalar(i) ?? "-").emojiToImage(size: 120)
+            imojis.append(image)
+        }
+        
+        stickerCollectionView.reloadData()
+    }
+    
+    
+    //MARK: - Sticker Collection View
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imojis.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = stickerCollectionView.dequeueReusableCell(withReuseIdentifier: "StickerCollectionViewCell", for: indexPath) as! StickerCollectionViewCell
+        cell.backgroundColor = UIColor(named: "cell")
+        cell.layer.cornerRadius = 5
+        cell.editedImage.image = imojis[indexPath.row]
+        return cell
+    }
 
-extension UIView
-{
-    func fixInView(_ container: UIView!) -> Void{
-        self.translatesAutoresizingMaskIntoConstraints = false;
-        self.frame = container.frame;
-        container.addSubview(self);
-        NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: container, attribute: .leading, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: container, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: container, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
-        NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
-    }
 }

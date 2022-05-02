@@ -15,6 +15,7 @@
 		A53EA43626A593D900D673D7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EA43526A593D900D673D7 /* Extensions.swift */; };
 		A53EA43826A61E7A00D673D7 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EA43726A61E7A00D673D7 /* EditorViewController.swift */; };
 		A53EA43C26A7DC2500D673D7 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EA43B26A7DC2500D673D7 /* FilterCollectionViewCell.swift */; };
+		A5675DB828205967007F0881 /* StickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DB728205967007F0881 /* StickerCollectionViewCell.swift */; };
 		A581C8A326AAE15C00501923 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A581C8A226AAE15C00501923 /* File.swift */; };
 		A5EC50472809EDA900F7DCD6 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC50462809EDA900F7DCD6 /* StickerView.swift */; };
 		A5EC50492809EDC200F7DCD6 /* StickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5EC50482809EDC200F7DCD6 /* StickerView.xib */; };
@@ -33,6 +34,7 @@
 		A53EA43526A593D900D673D7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A53EA43726A61E7A00D673D7 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		A53EA43B26A7DC2500D673D7 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5675DB728205967007F0881 /* StickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		A581C8A226AAE15C00501923 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		A5EC50462809EDA900F7DCD6 /* StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
 		A5EC50482809EDC200F7DCD6 /* StickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StickerView.xib; sourceTree = "<group>"; };
@@ -118,6 +120,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		A5675DB928206168007F0881 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A5675DB728205967007F0881 /* StickerCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		A581C8A126AACBCF00501923 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +141,7 @@
 			children = (
 				A5EC50462809EDA900F7DCD6 /* StickerView.swift */,
 				A5EC50482809EDC200F7DCD6 /* StickerView.xib */,
+				A5675DB928206168007F0881 /* Cell */,
 			);
 			path = Sticker;
 			sourceTree = "<group>";
@@ -216,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5675DB828205967007F0881 /* StickerCollectionViewCell.swift in Sources */,
 				A53EA42226A57D4800D673D7 /* SelectViewController.swift in Sources */,
 				A53EA41E26A57D4800D673D7 /* AppDelegate.swift in Sources */,
 				A581C8A326AAE15C00501923 /* File.swift in Sources */,
