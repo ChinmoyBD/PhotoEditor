@@ -16,6 +16,7 @@
 		A53EA43826A61E7A00D673D7 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EA43726A61E7A00D673D7 /* EditorViewController.swift */; };
 		A53EA43C26A7DC2500D673D7 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EA43B26A7DC2500D673D7 /* FilterCollectionViewCell.swift */; };
 		A5675DB828205967007F0881 /* StickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DB728205967007F0881 /* StickerCollectionViewCell.swift */; };
+		A5675DBB28244DCC007F0881 /* StickerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DBA28244DCC007F0881 /* StickerContainerView.swift */; };
 		A581C8A326AAE15C00501923 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A581C8A226AAE15C00501923 /* File.swift */; };
 		A5EC50472809EDA900F7DCD6 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC50462809EDA900F7DCD6 /* StickerView.swift */; };
 		A5EC50492809EDC200F7DCD6 /* StickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5EC50482809EDC200F7DCD6 /* StickerView.xib */; };
@@ -35,6 +36,7 @@
 		A53EA43726A61E7A00D673D7 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		A53EA43B26A7DC2500D673D7 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5675DB728205967007F0881 /* StickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5675DBA28244DCC007F0881 /* StickerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerContainerView.swift; sourceTree = "<group>"; };
 		A581C8A226AAE15C00501923 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		A5EC50462809EDA900F7DCD6 /* StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
 		A5EC50482809EDC200F7DCD6 /* StickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StickerView.xib; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				A5EC50452809ED4700F7DCD6 /* Sticker */,
 				A53EA43426A57F5300D673D7 /* Storyboards */,
 				A53EA43B26A7DC2500D673D7 /* FilterCollectionViewCell.swift */,
+				A5675DBA28244DCC007F0881 /* StickerContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				A581C8A326AAE15C00501923 /* File.swift in Sources */,
 				A53EA43826A61E7A00D673D7 /* EditorViewController.swift in Sources */,
 				A5EC50472809EDA900F7DCD6 /* StickerView.swift in Sources */,
+				A5675DBB28244DCC007F0881 /* StickerContainerView.swift in Sources */,
 				A53EA43C26A7DC2500D673D7 /* FilterCollectionViewCell.swift in Sources */,
 				A5F1162A27FCB4170060CF2C /* HomeViewController.swift in Sources */,
 				A53EA43626A593D900D673D7 /* Extensions.swift in Sources */,
