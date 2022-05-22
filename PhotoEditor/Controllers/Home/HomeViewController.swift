@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class HomeViewController: UIViewController {
     
@@ -13,7 +14,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var popUpView: UIView!
-    @IBOutlet weak var mainImageView: UIImageView!
+    @IBOutlet weak var canvasView: UIView!
+    
+    let acView = UIView()
+    let mainImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +82,11 @@ class HomeViewController: UIViewController {
 extension HomeViewController: StickerViewDelegate {
     func selectedImage(image: UIImage) {
         popUpButtons(UIButton())
-        print(image)
+        let stImage = StickerContainerView(
+            frame: CGRect(x: 100, y: 100, width: 100, height: 100),
+            image: image
+        )
+        acView.addSubview(stImage)
     }
 }
 
@@ -91,7 +99,13 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
                 topView.isHidden = false
                 bottomView.isHidden = false
                 mainImgImportView.isHidden = true
+                //mainImageView.image = image
+                let frame = AVMakeRect(aspectRatio: image.size, insideRect: self.canvasView.bounds)
+                acView.frame = frame
+                mainImageView.frame = acView.bounds
                 mainImageView.image = image
+                acView.addSubview(mainImageView)
+                canvasView.addSubview(acView)
             }
         }
     }

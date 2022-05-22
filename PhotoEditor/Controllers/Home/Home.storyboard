@@ -70,18 +70,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyM-uh-Sf9">
                                 <rect key="frame" x="0.0" y="88" width="428" height="584.66666666666663"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JqO-oh-G4A">
-                                        <rect key="frame" x="5" y="84.333333333333343" width="418" height="416.66666666666669"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wh8-Cv-DRc">
+                                        <rect key="frame" x="5" y="83.333333333333371" width="418" height="418"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="JqO-oh-G4A" secondAttribute="height" multiplier="1:1" id="FAy-Ei-Nox"/>
+                                            <constraint firstAttribute="width" secondItem="Wh8-Cv-DRc" secondAttribute="height" multiplier="1:1" id="KE3-uR-PCs"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="JqO-oh-G4A" firstAttribute="centerX" secondItem="fyM-uh-Sf9" secondAttribute="centerX" id="R1c-Yo-CXz"/>
-                                    <constraint firstItem="JqO-oh-G4A" firstAttribute="leading" secondItem="fyM-uh-Sf9" secondAttribute="leading" constant="5" id="S24-f1-whR"/>
-                                    <constraint firstItem="JqO-oh-G4A" firstAttribute="centerY" secondItem="fyM-uh-Sf9" secondAttribute="centerY" id="fgY-MT-kkA"/>
+                                    <constraint firstItem="Wh8-Cv-DRc" firstAttribute="centerX" secondItem="fyM-uh-Sf9" secondAttribute="centerX" id="T3e-Ul-Bbz"/>
+                                    <constraint firstItem="Wh8-Cv-DRc" firstAttribute="centerY" secondItem="fyM-uh-Sf9" secondAttribute="centerY" id="eVt-du-oeu"/>
+                                    <constraint firstItem="Wh8-Cv-DRc" firstAttribute="leading" secondItem="fyM-uh-Sf9" secondAttribute="leading" constant="5" id="mfO-7Z-CXz"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lm4-95-Wvb">
@@ -400,7 +401,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomView" destination="lm4-95-Wvb" id="aSJ-AT-dBz"/>
-                        <outlet property="mainImageView" destination="JqO-oh-G4A" id="J82-wP-3NV"/>
+                        <outlet property="canvasView" destination="Wh8-Cv-DRc" id="GnO-0F-7t6"/>
                         <outlet property="mainImgImportView" destination="OES-02-6If" id="dEb-dk-MCn"/>
                         <outlet property="popUpView" destination="CFf-BY-7fh" id="oCS-su-SoW"/>
                         <outlet property="topView" destination="fyM-uh-Sf9" id="Gee-bV-pZI"/>
@@ -437,7 +438,6 @@
         <image name="crop" catalog="system" width="128" height="116"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>
-        <image name="square.and.arrow.up.circle.fill" catalog="system" width="128" height="121"/>
         <image name="star.leadinghalf.filled" catalog="system" width="128" height="116"/>
         <image name="t.square" catalog="system" width="128" height="114"/>
         <namedColor name="PopUpView">
