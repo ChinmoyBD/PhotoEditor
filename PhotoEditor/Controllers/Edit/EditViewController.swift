@@ -103,6 +103,8 @@ extension EditViewController: StickerViewDelegate, CropViewControllerDelegate{
             // 'image' is the newly cropped version of the original image
         originalImage = image
         setupLayout()
+        
+        cropViewController.dismiss(animated: true, completion: nil)
     }
     
 }
