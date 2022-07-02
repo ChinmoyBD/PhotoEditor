@@ -22,6 +22,8 @@
 		A5EC50492809EDC200F7DCD6 /* StickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5EC50482809EDC200F7DCD6 /* StickerView.xib */; };
 		A5F1162827FCAFF20060CF2C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5F1162727FCAFF20060CF2C /* Home.storyboard */; };
 		A5F1162A27FCB4170060CF2C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F1162927FCB4170060CF2C /* HomeViewController.swift */; };
+		A5FA11FB286F57E700DFEE55 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FA11F9286F57E700DFEE55 /* EditViewController.swift */; };
+		A5FA11FC286F57E700DFEE55 /* EditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5FA11FA286F57E700DFEE55 /* EditViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		A5EC50482809EDC200F7DCD6 /* StickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StickerView.xib; sourceTree = "<group>"; };
 		A5F1162727FCAFF20060CF2C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		A5F1162927FCB4170060CF2C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A5FA11F9286F57E700DFEE55 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		A5FA11FA286F57E700DFEE55 /* EditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 		A53EA43126A57E7100D673D7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A5FA11F8286F57C100DFEE55 /* Edit */,
 				A5F1162627FCAFA70060CF2C /* Home */,
 				A53EA42126A57D4800D673D7 /* SelectViewController.swift */,
 				A53EA43726A61E7A00D673D7 /* EditorViewController.swift */,
@@ -158,6 +163,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		A5FA11F8286F57C100DFEE55 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				A5FA11F9286F57E700DFEE55 /* EditViewController.swift */,
+				A5FA11FA286F57E700DFEE55 /* EditViewController.xib */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -215,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5FA11FC286F57E700DFEE55 /* EditViewController.xib in Resources */,
 				A53EA42A26A57D4A00D673D7 /* LaunchScreen.storyboard in Resources */,
 				A53EA42726A57D4A00D673D7 /* Assets.xcassets in Resources */,
 				A53EA42526A57D4800D673D7 /* Main.storyboard in Resources */,
@@ -239,6 +254,7 @@
 				A5675DBB28244DCC007F0881 /* StickerContainerView.swift in Sources */,
 				A53EA43C26A7DC2500D673D7 /* FilterCollectionViewCell.swift in Sources */,
 				A5F1162A27FCB4170060CF2C /* HomeViewController.swift in Sources */,
+				A5FA11FB286F57E700DFEE55 /* EditViewController.swift in Sources */,
 				A53EA43626A593D900D673D7 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

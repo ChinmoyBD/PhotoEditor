@@ -80,6 +80,9 @@ class HomeViewController: UIViewController {
 //MARK: - Sticker
 
 extension HomeViewController: StickerViewDelegate {
+    func dismiss() {
+    }
+    
     func selectedImage(image: UIImage) {
         popUpButtons(UIButton())
         let stImage = StickerContainerView(
@@ -96,7 +99,7 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         dismiss(animated: true) { [self] in
             if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as? UIImage {
-                topView.isHidden = false
+/*                topView.isHidden = false
                 bottomView.isHidden = false
                 mainImgImportView.isHidden = true
                 //mainImageView.image = image
@@ -106,6 +109,12 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
                 mainImageView.image = image
                 acView.addSubview(mainImageView)
                 canvasView.addSubview(acView)
+ */
+                let vc = EditViewController(nibName: "EditViewController", bundle: nil)
+                vc.originalImage = image
+                vc.modalPresentationStyle = .fullScreen
+                vc.modalTransitionStyle = .crossDissolve
+                present(vc, animated: true, completion: nil)
             }
         }
     }

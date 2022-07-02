@@ -9,6 +9,7 @@ import UIKit
 
 protocol StickerViewDelegate {
     func selectedImage(image: UIImage)
+    func dismiss()
 }
 
 class StickerView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -40,6 +41,13 @@ class StickerView: UIView, UICollectionViewDelegate, UICollectionViewDataSource 
         stickerCollectionView.register(StickerCollectionViewCell.self, forCellWithReuseIdentifier: StickerCollectionViewCell.identifier)
         loadCollectionViewData()
     }
+    
+    @IBAction func dismiss(_ sender: UIButton) {
+        if let delegate = delegate {
+            delegate.dismiss()
+        }
+    }
+    
     
     func loadCollectionViewData() {
         for i in 0x1F601...0x1F64F {
