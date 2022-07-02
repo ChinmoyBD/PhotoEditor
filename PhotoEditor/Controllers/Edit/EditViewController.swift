@@ -55,6 +55,11 @@ class EditViewController: UIViewController {
         case 2:
             break
         case 3:
+            if let originalImage = originalImage {
+                let vc = CropViewController(image: originalImage)
+                vc.delegate = self
+                present(vc, animated: true, completion: nil)
+            }
             break
         case 4:
             break
@@ -68,19 +73,21 @@ class EditViewController: UIViewController {
 extension EditViewController {
     
     func setup() {
-        editingImageView.image = originalImage
         stickerView.delegate = self
     }
     
     func setupLayout() {
-        let rect = AVMakeRect(aspectRatio: originalImage?.size ?? .zero, insideRect: topView.bounds)
         
+        editingImageView.image = originalImage
+
+        let rect = AVMakeRect(aspectRatio: originalImage?.size ?? .zero, insideRect: topView.bounds)
         canvasViewWidth.constant = rect.width
         canvasViewHeight.constant = rect.height
     }
 }
 
-extension EditViewController: StickerViewDelegate {
+extension EditViewController: StickerViewDelegate, CropViewControllerDelegate{
+    
     func selectedImage(image: UIImage) {
         print(image)
     }
@@ -91,4 +98,11 @@ extension EditViewController: StickerViewDelegate {
             self.view.layoutIfNeeded()
         }
     }
+    
+    func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+            // 'image' is the newly cropped version of the original image
+        originalImage = image
+        setupLayout()
+    }
+    
 }
