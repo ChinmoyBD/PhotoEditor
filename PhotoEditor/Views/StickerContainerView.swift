@@ -11,14 +11,16 @@ class StickerContainerView: UIView {
 
     var initFrame: CGRect?
     var lastRotation: CGFloat = 0
+    var maxFrame: CGRect?
 
-    init(frame: CGRect, image: UIImage) {
+    init(frame: CGRect, image: UIImage, maxFrame: CGRect) {
         super.init(frame: frame)
         
         let imgView = UIImageView(frame: self.bounds)
         imgView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(imgView)
         imgView.image = image
+        self.maxFrame = maxFrame
         
         /// Gestures
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.wasDragged(_:)))
@@ -47,7 +49,35 @@ class StickerContainerView: UIView {
             
             //self.bringSubviewToFront(image)
             
-            image.center = CGPoint(x: (image.center.x) + translation.x, y: (image.center.y) + translation.y)
+            var x = (image.center.x) + translation.x
+            var y = (image.center.y) + translation.y
+            print(x, y)
+            if let maxFrame = maxFrame {
+                
+                let imageCnterX = image.width/2
+                
+                if x >= maxFrame.width - imageCnterX || x <= imageCnterX {
+                    if x >= maxFrame.width - imageCnterX {
+                        x = maxFrame.width - (imageCnterX)
+                    }
+                    else if x <= imageCnterX {
+                        x = imageCnterX
+                    }
+                }
+                
+                let imageCnterY = image.height/2
+                
+                if y >= maxFrame.height - imageCnterY || y <= imageCnterY {
+                    if y >= maxFrame.height - imageCnterY {
+                        y = maxFrame.height - (imageCnterY)
+                    }
+                    else if y <= imageCnterY {
+                        y = imageCnterY
+                    }
+                }
+            }
+            
+            image.center = CGPoint(x: x, y: y)
             gesture.setTranslation(CGPoint.zero, in: self.superview)
             
         }

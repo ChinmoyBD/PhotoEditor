@@ -87,7 +87,8 @@ extension HomeViewController: StickerViewDelegate {
         popUpButtons(UIButton())
         let stImage = StickerContainerView(
             frame: CGRect(x: 100, y: 100, width: 100, height: 100),
-            image: image
+            image: image,
+            maxFrame: acView.frame
         )
         acView.addSubview(stImage)
     }
