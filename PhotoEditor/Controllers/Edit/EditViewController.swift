@@ -86,6 +86,18 @@ class EditViewController: UIViewController {
             break
         }
     }
+    
+    @IBAction func navButtonsAction(_ sender: UIButton) {
+        //Back
+        if sender.tag == 0 {
+            self.dismiss(animated: true)
+        }
+        //Next
+        else {
+            
+        }
+    }
+    
 }
 
 
