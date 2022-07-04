@@ -17,6 +17,9 @@
 		A53EA43C26A7DC2500D673D7 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EA43B26A7DC2500D673D7 /* FilterCollectionViewCell.swift */; };
 		A5675DB828205967007F0881 /* StickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DB728205967007F0881 /* StickerCollectionViewCell.swift */; };
 		A5675DBB28244DCC007F0881 /* StickerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5675DBA28244DCC007F0881 /* StickerContainerView.swift */; };
+		A5758E562871E44400BFAD97 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5758E552871E44400BFAD97 /* FilterView.swift */; };
+		A5758E582871E45400BFAD97 /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5758E572871E45400BFAD97 /* FilterView.xib */; };
+		A5758E5C2871F83000BFAD97 /* UIImage+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5758E5B2871F83000BFAD97 /* UIImage+Extention.swift */; };
 		A581C8A326AAE15C00501923 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A581C8A226AAE15C00501923 /* File.swift */; };
 		A590ED3F2870BA4200F28815 /* CropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A590ED3D2870BA4200F28815 /* CropViewController.swift */; };
 		A590EE352870BCEF00F28815 /* TOActivityCroppedImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A590EE1E2870BCEF00F28815 /* TOActivityCroppedImageProvider.m */; };
@@ -50,6 +53,9 @@
 		A5675DB728205967007F0881 /* StickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5675DBA28244DCC007F0881 /* StickerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerContainerView.swift; sourceTree = "<group>"; };
 		A5712D612870A9A00042763A /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		A5758E552871E44400BFAD97 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		A5758E572871E45400BFAD97 /* FilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
+		A5758E5B2871F83000BFAD97 /* UIImage+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extention.swift"; sourceTree = "<group>"; };
 		A581C8A226AAE15C00501923 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		A590ED3C2870BA4200F28815 /* CropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropViewController.h; sourceTree = "<group>"; };
 		A590ED3D2870BA4200F28815 /* CropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				A53EA41D26A57D4800D673D7 /* AppDelegate.swift */,
+				A5758E5A2871F81500BFAD97 /* Helper */,
 				A53EA43326A57ECF00D673D7 /* Resources */,
 				A581C8A126AACBCF00501923 /* Model */,
 				A53EA43226A57E9600D673D7 /* Views */,
@@ -135,9 +142,9 @@
 		A53EA43226A57E9600D673D7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A5758E542871E40B00BFAD97 /* Filters */,
 				A5EC50452809ED4700F7DCD6 /* Sticker */,
 				A53EA43426A57F5300D673D7 /* Storyboards */,
-				A53EA43B26A7DC2500D673D7 /* FilterCollectionViewCell.swift */,
 				A5675DBA28244DCC007F0881 /* StickerContainerView.swift */,
 			);
 			path = Views;
@@ -169,6 +176,32 @@
 				A5675DB728205967007F0881 /* StickerCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		A5758E542871E40B00BFAD97 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				A5758E552871E44400BFAD97 /* FilterView.swift */,
+				A5758E572871E45400BFAD97 /* FilterView.xib */,
+				A5758E592871F0D800BFAD97 /* Cell */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		A5758E592871F0D800BFAD97 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A53EA43B26A7DC2500D673D7 /* FilterCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		A5758E5A2871F81500BFAD97 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A5758E5B2871F83000BFAD97 /* UIImage+Extention.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		A581C8A126AACBCF00501923 /* Model */ = {
@@ -361,6 +394,7 @@
 				A5FA11FC286F57E700DFEE55 /* EditViewController.xib in Resources */,
 				A53EA42A26A57D4A00D673D7 /* LaunchScreen.storyboard in Resources */,
 				A53EA42726A57D4A00D673D7 /* Assets.xcassets in Resources */,
+				A5758E582871E45400BFAD97 /* FilterView.xib in Resources */,
 				A53EA42526A57D4800D673D7 /* Main.storyboard in Resources */,
 				A5EC50492809EDC200F7DCD6 /* StickerView.xib in Resources */,
 				A5F1162827FCAFF20060CF2C /* Home.storyboard in Resources */,
@@ -374,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5758E562871E44400BFAD97 /* FilterView.swift in Sources */,
 				A590EE3A2870BCEF00F28815 /* TOCropScrollView.m in Sources */,
 				A590EE372870BCEF00F28815 /* TOCroppedImageAttributes.m in Sources */,
 				A5675DB828205967007F0881 /* StickerCollectionViewCell.swift in Sources */,
@@ -391,6 +426,7 @@
 				A5675DBB28244DCC007F0881 /* StickerContainerView.swift in Sources */,
 				A590EE3E2870BCEF00F28815 /* UIImage+CropRotate.m in Sources */,
 				A590EE362870BCEF00F28815 /* TOCropViewControllerTransitioning.m in Sources */,
+				A5758E5C2871F83000BFAD97 /* UIImage+Extention.swift in Sources */,
 				A53EA43C26A7DC2500D673D7 /* FilterCollectionViewCell.swift in Sources */,
 				A5F1162A27FCB4170060CF2C /* HomeViewController.swift in Sources */,
 				A5FA11FB286F57E700DFEE55 /* EditViewController.swift in Sources */,
@@ -550,7 +586,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chinmoy.testApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/chinmoybiswas/Project/PhotoEditor/PhotoEditor/Resources/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "PhotoEditor/Resources/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -570,7 +606,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chinmoy.testApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/chinmoybiswas/Project/PhotoEditor/PhotoEditor/Resources/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "PhotoEditor/Resources/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

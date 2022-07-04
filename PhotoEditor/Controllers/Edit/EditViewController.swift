@@ -19,6 +19,15 @@ class EditViewController: UIViewController {
     @IBOutlet weak var stickerView: StickerView!
     @IBOutlet weak var stickerViewTop: NSLayoutConstraint!
     
+    @IBOutlet weak var filterView: FilterView! {
+        didSet {
+            filterView.originalImage = originalImage
+            filterView.loadCollectionViewData()
+        }
+    }
+    @IBOutlet weak var filterViewTop: NSLayoutConstraint!
+    
+    
     var originalImage: UIImage?
     
     override func viewDidLoad() {
@@ -44,16 +53,25 @@ class EditViewController: UIViewController {
     */
     @IBAction func buttonsAction(_ sender: UIButton) {
         switch sender.tag {
+        //Sticker
         case 0:
             stickerViewTop.constant = -5
             UIView.animate(withDuration: 0.2) {
                 self.view.layoutIfNeeded()
             }
             break
+        //Text
         case 1:
             break
+        //Filter
         case 2:
+            stickerViewTop.constant = 188
+            filterViewTop.constant = -5
+            UIView.animate(withDuration: 0.2) {
+                self.view.layoutIfNeeded()
+            }
             break
+        //Crop
         case 3:
             if let originalImage = originalImage {
                 let vc = CropViewController(image: originalImage)
@@ -61,6 +79,7 @@ class EditViewController: UIViewController {
                 present(vc, animated: true, completion: nil)
             }
             break
+        //Rotate
         case 4:
             break
         default:

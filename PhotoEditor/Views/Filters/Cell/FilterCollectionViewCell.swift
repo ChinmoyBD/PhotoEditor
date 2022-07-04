@@ -22,8 +22,8 @@ class FilterCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubview(editedImage)
         
-        editedImage.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        
+        editedImage.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+
         editedImage.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         editedImage.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         editedImage.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true

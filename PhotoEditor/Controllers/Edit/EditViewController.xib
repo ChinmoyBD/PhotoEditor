@@ -16,6 +16,8 @@
                 <outlet property="canvasViewHeight" destination="kNw-y7-lxU" id="kGW-fm-jNx"/>
                 <outlet property="canvasViewWidth" destination="tMY-t0-9sZ" id="6UP-mK-MTH"/>
                 <outlet property="editingImageView" destination="5YS-g4-gtM" id="EDX-dy-Yjz"/>
+                <outlet property="filterView" destination="PVi-R7-GR3" id="gIR-Zl-Qoy"/>
+                <outlet property="filterViewTop" destination="a0u-GO-09w" id="Lij-F5-Mrx"/>
                 <outlet property="stickerView" destination="D0a-4c-fW6" id="63L-Kr-zPa"/>
                 <outlet property="stickerViewTop" destination="brj-OT-BbE" id="5SL-Tb-e59"/>
                 <outlet property="topView" destination="zJz-tR-dpp" id="i4q-E9-LjI"/>
@@ -290,6 +292,13 @@
                                 <constraint firstAttribute="height" constant="188" id="qNY-d1-TNb"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PVi-R7-GR3" customClass="FilterView" customModule="PhotoEditor" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="188" width="414" height="188"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="188" id="cll-dl-rRn"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" name="bacground"/>
                     <constraints>
@@ -298,8 +307,11 @@
                         <constraint firstAttribute="trailing" secondItem="D0a-4c-fW6" secondAttribute="trailing" id="NAE-Iw-xI3"/>
                         <constraint firstItem="en0-V3-5f8" firstAttribute="leading" secondItem="WwY-M7-H62" secondAttribute="leading" constant="20" id="Qfh-Ys-GhI"/>
                         <constraint firstAttribute="height" constant="150" id="Rlj-ao-HVd"/>
+                        <constraint firstItem="PVi-R7-GR3" firstAttribute="top" secondItem="WwY-M7-H62" secondAttribute="top" constant="188" id="a0u-GO-09w"/>
                         <constraint firstAttribute="trailing" secondItem="en0-V3-5f8" secondAttribute="trailing" constant="20" id="b5m-SV-xjw"/>
                         <constraint firstItem="D0a-4c-fW6" firstAttribute="top" secondItem="WwY-M7-H62" secondAttribute="top" constant="188" id="brj-OT-BbE"/>
+                        <constraint firstItem="PVi-R7-GR3" firstAttribute="leading" secondItem="WwY-M7-H62" secondAttribute="leading" id="pp9-DX-oM1"/>
+                        <constraint firstAttribute="trailing" secondItem="PVi-R7-GR3" secondAttribute="trailing" id="xqu-dd-7if"/>
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jFt-dV-Fht">
