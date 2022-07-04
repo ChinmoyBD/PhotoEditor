@@ -55,7 +55,7 @@ class EditViewController: UIViewController {
         switch sender.tag {
         //Sticker
         case 0:
-            stickerViewTop.constant = -5
+            stickerViewTop.constant = -10
             UIView.animate(withDuration: 0.2) {
                 self.view.layoutIfNeeded()
             }
@@ -65,8 +65,9 @@ class EditViewController: UIViewController {
             break
         //Filter
         case 2:
+            filterView.delegate = self
             stickerViewTop.constant = 188
-            filterViewTop.constant = -5
+            filterViewTop.constant = -10
             UIView.animate(withDuration: 0.2) {
                 self.view.layoutIfNeeded()
             }
@@ -94,12 +95,11 @@ class EditViewController: UIViewController {
         }
         //Next
         else {
-            
+            UIImageWriteToSavedPhotosAlbum(originalImage!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         }
     }
     
 }
-
 
 extension EditViewController {
     
@@ -108,12 +108,29 @@ extension EditViewController {
     }
     
     func setupLayout() {
-        
         editingImageView.image = originalImage
 
         let rect = AVMakeRect(aspectRatio: originalImage?.size ?? .zero, insideRect: topView.bounds)
         canvasViewWidth.constant = rect.width
         canvasViewHeight.constant = rect.height
+    }
+    
+    
+    
+    //MARK: - Add image to Library
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            showAlertWith(title: "Save error", message: error.localizedDescription)
+        } else {
+            showAlertWith(title: "Saved!", message: "Your image has been saved to your photos.")
+        }
+    }
+
+    func showAlertWith(title: String, message: String){
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
     }
 }
 
@@ -137,5 +154,31 @@ extension EditViewController: StickerViewDelegate, CropViewControllerDelegate{
         
         cropViewController.dismiss(animated: true, completion: nil)
     }
+}
+
+extension EditViewController: FilterViewDelegate {
     
+    func dismiss(image: UIImage) {
+        originalImage = image
+        editingImageView.image = originalImage
+        
+        filterViewTop.constant = 188
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func filterdIamge(image: UIImage) {
+        originalImage = image
+        editingImageView.image = image
+        
+    }
+    
+    func applyFilter() {
+        originalImage = editingImageView.image
+        filterViewTop.constant = 188
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
 }

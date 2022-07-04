@@ -9,31 +9,35 @@ import UIKit
 import AVKit
 
 protocol FilterViewDelegate {
-    func selectedFilter(image: UIImage)
-    func dismiss()
+    func filterdIamge(image: UIImage)
+    func dismiss(image: UIImage)
     func applyFilter()
 }
 
 class FilterView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet var contentView: UIView!
+    
+    @IBOutlet weak var filterTypeCollectionView: UICollectionView!
     @IBOutlet weak var filterCollectionView: UICollectionView!
     
     var originalImage: UIImage?
     var thumImage: UIImage?
-    var filtersImage = [UIImage]()
     var delegate: FilterViewDelegate?
     
     // apply sepia filter
     let context = CIContext()
     
     let filters = [
-        "CIColorCrossPolynomial", "CIColorCube", "CIColorCubeWithColorSpace", "CIColorInvert", "CIColorMap",
         "CIColorMonochrome", "CIColorPosterize", "CIFalseColor", "CIMaskToAlpha", "CIMaximumComponent",
         "CIMinimumComponent", "CIPhotoEffectChrome", "CIPhotoEffectFade", "CIPhotoEffectInstant", "CIPhotoEffectMono",
         "CIPhotoEffectNoir", "CIPhotoEffectProcess", "CIPhotoEffectTonal", "CIPhotoEffectTransfer", "CISepiaTone",
         "CIVignette", "CIVignetteEffect"
     ]
+    
+
+    var filtersType = ["Basic", "Instagram", "GPUFilter"]
+    var filtersImage = [UIImage]()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,18 +55,35 @@ class FilterView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         viewFromXib.frame = self.bounds
         addSubview(viewFromXib)
         
-        filterCollectionView.delegate = self
-        filterCollectionView.dataSource = self
-        filterCollectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.identifier)
+        setupCollectionView()
         loadCollectionViewData()
     }
     
     @IBAction func dismiss(_ sender: UIButton) {
-        if let delegate = delegate {
-            delegate.dismiss()
+        if let delegate = delegate, let originalImage = originalImage {
+            delegate.dismiss(image: originalImage)
         }
     }
+    @IBAction func applyFilterButtonPressed(_ sender: UIButton) {
+        if let delegate = delegate {
+            delegate.applyFilter()
+        }
+    }
+}
+
+
+extension FilterView {
     
+    func setupCollectionView() {
+        filterTypeCollectionView.delegate = self
+        filterTypeCollectionView.dataSource = self
+        filterTypeCollectionView.register(FilterTypeCollectionViewCell.self, forCellWithReuseIdentifier: FilterTypeCollectionViewCell.identifier)
+        filterTypeCollectionView.selectItem(at: [0, 0], animated: true, scrollPosition: .bottom)
+        
+        filterCollectionView.delegate = self
+        filterCollectionView.dataSource = self
+        filterCollectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.identifier)
+    }
     
     func loadCollectionViewData() {
         
@@ -82,20 +103,50 @@ class FilterView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     //MARK: - Sticker Collection View
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filtersImage.count
+        switch collectionView {
+        case self.filterTypeCollectionView:
+            return filtersType.count
+        case self.filterCollectionView:
+            return filtersImage.count
+        default:
+            break
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: "FilterCollectionViewCell", for: indexPath) as! FilterCollectionViewCell
-        cell.backgroundColor = UIColor(named: "cell")
-        cell.layer.cornerRadius = 5
-        cell.editedImage.image = filtersImage[indexPath.row]
-        return cell
+        
+        switch collectionView {
+        case self.filterTypeCollectionView:
+            let cell = filterTypeCollectionView.dequeueReusableCell(withReuseIdentifier: FilterTypeCollectionViewCell.identifier, for: indexPath) as! FilterTypeCollectionViewCell
+            cell.backgroundColor = UIColor(named: "cell")
+            cell.layer.cornerRadius = 5
+            cell.typeLabel.text = filtersType[indexPath.row]
+            return cell
+            
+        case self.filterCollectionView:
+            let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: FilterCollectionViewCell.identifier, for: indexPath) as! FilterCollectionViewCell
+            cell.backgroundColor = UIColor(named: "cell")
+            cell.layer.cornerRadius = 5
+            cell.editedImage.image = filtersImage[indexPath.row]
+            return cell
+        default:
+            break
+        }
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let delegate = delegate {
-            //delegate.selectedImage(image: emojis[indexPath.row])
+        switch collectionView {
+        case self.filterTypeCollectionView:
+            break
+        case self.filterCollectionView:
+            if let delegate = delegate {
+                let img = setFilter(filterType: filters[indexPath.row])
+                delegate.filterdIamge(image: img)
+            }
+        default:
+            break
         }
     }
 
